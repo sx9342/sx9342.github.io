@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C语言知识笔记2 | Rin_laurant's blog</title><meta name="author" content="Rin_laurant,sx934215479@163.com"><meta name="copyright" content="Rin_laurant"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Types, Operators and Expressions 从这一章节开始，将会采用常用的C标准    Variables and constants are the basic data objects manipulated in a program. Declarations list the variables to be used, and state what type they">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言知识笔记2">
+<meta property="og:url" content="https://sx9342.github.io/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/index.html">
+<meta property="og:site_name" content="Rin_laurant&#39;s blog">
+<meta property="og:description" content="Types, Operators and Expressions 从这一章节开始，将会采用常用的C标准    Variables and constants are the basic data objects manipulated in a program. Declarations list the variables to be used, and state what type they">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sx9342.github.io/img/giFnui8.jpg">
+<meta property="article:published_time" content="2024-09-19T00:28:46.000Z">
+<meta property="article:modified_time" content="2024-09-19T01:54:46.730Z">
+<meta property="article:author" content="Rin_laurant">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="计算机软件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sx9342.github.io/img/giFnui8.jpg"><link rel="shortcut icon" href="/img/LOGO.png"><link rel="canonical" href="https://sx9342.github.io/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C语言知识笔记2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-19 09:54:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/sound-horizon-wallpaper-3.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/giFnui8.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Rin_laurant's blog"><img class="site-icon" src="/img/LOGO.png"/><span class="site-name">Rin_laurant's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C语言知识笔记2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-19T00:28:46.000Z" title="发表于 2024-09-19 08:28:46">2024-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-19T01:54:46.730Z" title="更新于 2024-09-19 09:54:46">2024-09-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C语言知识笔记2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Types-Operators-and-Expressions"><a href="#Types-Operators-and-Expressions" class="headerlink" title="Types, Operators and Expressions"></a>Types, Operators and Expressions</h1><blockquote>
+<p>从这一章节开始，将会采用常用的C标准</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Variables and constants are the basic data objects manipulated in a program. Declarations list the variables to be used, and state what type they have and perhaps what their initial values are. Operators specify what is to be done to them. Expressions combine variables and constants to produce new values. The type of an object determines the set of values it can have and what operations can be performed on it. These building blocks are the topics of this chapter.</p>
+</blockquote>
+<p>本章节将详细介绍各种变量类型，运算符以及表达式。</p>
+<h2 id="Variables-Names"><a href="#Variables-Names" class="headerlink" title="Variables Names"></a>Variables Names</h2><blockquote>
+<p>Names are made up of letters and digits; the first character must be a letter. The underscore &#96;&#96;_’’ counts as a letter; it is sometimes useful for improving the readability of long variable names.</p>
+</blockquote>
+<p>变量名由字母和数字组成，第一个字符必须是字母。下划线<code>_</code>可以作为字母，在较长的变量名中可提高阅读性。变量不要以<code>_</code>开头，因为一些库的函数可能会以<code>_</code>开头，如<code>_getchar()</code>。<br>注意，变量是区分大小写的，<code>x</code>和<code>X</code>是完全不同的两个变量，在传统C开发中，一般变量用小写，常量用大写。</p>
+<p>像<code>int</code>、<code>char</code>、<code>float</code>、<code>double</code>等关键字不能作为变量名。</p>
+<h2 id="Data-Types-and-Sizes"><a href="#Data-Types-and-Sizes" class="headerlink" title="Data Types and Sizes"></a>Data Types and Sizes</h2><p>这有一些基本的数据类型：</p>
+<ul>
+<li><code>int</code> 表示整数，可以表示正负整数。</li>
+<li><code>float</code>表示浮点数，可以表示小数。</li>
+<li><code>double</code>表示双精度浮点数，可以表示小数。</li>
+</ul>
+<p>另外，还有能表示更长或更短的数据形式比如<code>short</code>和<code>long</code>，都是整型变量。一般<code>int</code>的长度会由编辑器决定，<code>short</code>一般是16bit，<code>int</code> 32bit或16bit都有可能，但是，<code>short</code>和<code>int</code>至少要高于16bit，<code>long</code>至少32bit，而且 <code>short</code>绝对比<code>int</code>短，且都必须比<code>long</code>短。</p>
+<ul>
+<li><p>关于<code>singned</code>和<code>unsigned</code></p>
+</li>
+<li><p><code>signed</code>表示有符号的，可以表示正负整数，<code>unsigned</code>表示无符号的，只能表示正整数。</p>
+</li>
+<li><p>关于<code>char</code>, <code>char</code>表示字符，可以表示一个字符，如<code>&#39;a&#39;</code>，<code>&#39;b&#39;</code></p>
+</li>
+<li><p><code>char</code>的大小是8bit，但是<code>char</code>本质上是一个整数类型。这是因为 char 类型在内存中存储的是整数，这些整数对应于特定的字符编码（如 ASCII 编码）。这意味着 char 类型可以用来存储单个字符，同时也能够存储在该编码下的整数值。</p>
+</li>
+<li><p>所以char也有符号之分，并且可以存储负数。</p>
+</li>
+</ul>
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><p><code>int</code> 类型如<code>1234</code>，<code>long</code>会加上<code>L</code>，如<code>1234L</code>。unsigned的类型会加上<code>u</code>或者<code>U</code>。</p>
+<p><code>int</code>的进制可以为十进制，八进制和十六进制。</p>
+<ol>
+<li>十进制：直接输入数字，如<code>1234·</code></li>
+<li>八进制：以<code>0</code>开头，如<code>01234</code></li>
+<li>十六进制：以<code>0x</code>或<code>0X</code>开头，如<code>0x1234</code></li>
+<li>其他进制：如<code>0b1010</code>，<code>0o1234</code><blockquote>
+<p>为何没有二进制？ 在 C 语言中，int 类型本身并不直接支持二进制字面量。直到 C99 标准之后，C 语言引入了 _Complex 和 _Imaginary 关键字，但这些与二进制字面量无关。直到 C11 标准，C 语言才正式支持了二进制字面量以及其他基数的字面量表示。</p>
+</blockquote>
+</li>
+</ol>
+<p>字符常量也是一种整型，在前文提到过,此处不再过多讲解。<br>关于转义字符，请看下表</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\n</code></td>
+<td>换行符</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符（水平制表）</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车符</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>退格符</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠符</td>
+</tr>
+<tr>
+<td><code>\&#39;</code></td>
+<td>单引号</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>双引号</td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>空字符（NUL）</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>换页符</td>
+</tr>
+<tr>
+<td><code>\?</code></td>
+<td>问号符（防止与三元运算符冲突）</td>
+</tr>
+<tr>
+<td><code>\xhh</code></td>
+<td>以十六进制表示的字符</td>
+</tr>
+<tr>
+<td><code>\ooo</code></td>
+<td>以八进制表示的字符</td>
+</tr>
+</tbody></table>
+<p>关于 <code>\0</code>有必要单独讲解</p>
+<ul>
+<li>‘\0’ 是一个特殊的字符，表示 空字符 或 null 字符。它的 ASCII 值为 0。</li>
+<li>在字符串中，’\0’ 通常用来标记字符串的结束。</li>
+<li>字符数组（即字符串）通常以 ‘\0’ 结束，以便字符串处理函数（如 strlen()、strcpy() 等）知道字符串的边界。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">10</span>] = <span class="string">&quot;Hello&quot;</span>;  <span class="comment">// 字符串 &quot;Hello&quot;</span></span><br><span class="line">    str[<span class="number">5</span>] = <span class="string">&#x27;\0&#x27;</span>;          <span class="comment">// 手动添加 null 字符</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;String: %s\n&quot;</span>, str);  <span class="comment">// 输出 &quot;Hello&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 strlen 计算字符串长度</span></span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Length: %d\n&quot;</span>, length);  <span class="comment">// 输出 5</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Declarations"><a href="#Declarations" class="headerlink" title="Declarations"></a>Declarations</h2><blockquote>
+<p>All variables must be declared before use, although certain declarations can be made implicitly by content.</p>
+</blockquote>
+<p>所有变量必须在使用前声明，尽管某些声明可以隐式地声明</p>
+<ol>
+<li>显式声明：在变量名前加上类型，如<code>int x;</code>，<code>float y;</code>，<code>char z;</code></li>
+<li>隐式声明：在函数中，如果函数没有显式声明，那么函数中的变量会被隐式声明，如<code>x = 1;</code>，<code>y = 2.0;</code>，<code>z = &#39;a&#39;;</code></li>
+</ol>
+<p>限定字符<code>const</code>可以禁止变量被修改，如<code>const int x = 1;</code>，<code>const float y = 2.0;</code>，<code>const char z = &#39;a&#39;;</code></p>
+<p>建议在变量声明后赋初值，如<code>int x = 1;</code>，<code>float y = 2.0;</code>如果不赋初值，会导致一些未知的问题和影响，甚至会使程序崩溃。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">example</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;  <span class="comment">// 不赋初值的局部变量</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d\n&quot;</span>, x);  <span class="comment">// 输出未定义的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    example();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sx9342.github.io">Rin_laurant</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://sx9342.github.io/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/">https://sx9342.github.io/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sx9342.github.io" target="_blank">Rin_laurant's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6/">计算机软件</a></div><div class="post_share"><div class="social-share" data-image="/img/giFnui8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/25/python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93/" title="python基本数据结构总结1"><img class="cover" src="/img/%E6%9C%9D%E9%9D%84%E3%81%AE%E8%A1%97.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">python基本数据结构总结1</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/10/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B01/" title="C语言知识笔记1"><img class="cover" src="/img/giFnui8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言知识笔记1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/10/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B01/" title="C语言知识笔记1"><img class="cover" src="/img/giFnui8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-10</div><div class="title">C语言知识笔记1</div></div></a></div><div><a href="/2024/09/25/python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93/" title="python基本数据结构总结1"><img class="cover" src="/img/%E6%9C%9D%E9%9D%84%E3%81%AE%E8%A1%97.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="title">python基本数据结构总结1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/sound-horizon-wallpaper-3.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rin_laurant</div><div class="author-info__description">计算机爱好者，日系摇滚党，分享感兴趣的知识</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sx9342"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Types-Operators-and-Expressions"><span class="toc-number">1.</span> <span class="toc-text">Types, Operators and Expressions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Variables-Names"><span class="toc-number">1.1.</span> <span class="toc-text">Variables Names</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data-Types-and-Sizes"><span class="toc-number">1.2.</span> <span class="toc-text">Data Types and Sizes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constants"><span class="toc-number">1.3.</span> <span class="toc-text">Constants</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Declarations"><span class="toc-number">1.4.</span> <span class="toc-text">Declarations</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/25/python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93/" title="python基本数据结构总结1"><img src="/img/%E6%9C%9D%E9%9D%84%E3%81%AE%E8%A1%97.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python基本数据结构总结1"/></a><div class="content"><a class="title" href="/2024/09/25/python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93/" title="python基本数据结构总结1">python基本数据结构总结1</a><time datetime="2024-09-25T08:05:39.000Z" title="发表于 2024-09-25 16:05:39">2024-09-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/" title="C语言知识笔记2"><img src="/img/giFnui8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言知识笔记2"/></a><div class="content"><a class="title" href="/2024/09/19/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B02/" title="C语言知识笔记2">C语言知识笔记2</a><time datetime="2024-09-19T00:28:46.000Z" title="发表于 2024-09-19 08:28:46">2024-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/10/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B01/" title="C语言知识笔记1"><img src="/img/giFnui8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言知识笔记1"/></a><div class="content"><a class="title" href="/2024/09/10/C%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B01/" title="C语言知识笔记1">C语言知识笔记1</a><time datetime="2024-09-10T07:42:56.000Z" title="发表于 2024-09-10 15:42:56">2024-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/04/%E8%8B%B1%E8%AF%AD%E5%9B%9B%E7%BA%A7%E5%90%AC%E5%8A%9B%E6%96%B9%E6%B3%95-%E7%9F%AD%E7%89%87%E6%96%B0%E9%97%BB/" title="英语四级听力方法(短片新闻)"><img src="/img/%E8%99%B9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="英语四级听力方法(短片新闻)"/></a><div class="content"><a class="title" href="/2024/09/04/%E8%8B%B1%E8%AF%AD%E5%9B%9B%E7%BA%A7%E5%90%AC%E5%8A%9B%E6%96%B9%E6%B3%95-%E7%9F%AD%E7%89%87%E6%96%B0%E9%97%BB/" title="英语四级听力方法(短片新闻)">英语四级听力方法(短片新闻)</a><time datetime="2024-09-04T11:08:03.000Z" title="发表于 2024-09-04 19:08:03">2024-09-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/03/%E8%8B%B1%E8%AF%AD%E5%9B%9B%E7%BA%A7%E5%90%AC%E5%8A%9B%E6%96%B9%E6%B3%95/" title="英语四级听力笔记（核心方法）"><img src="/img/%E8%99%B9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="英语四级听力笔记（核心方法）"/></a><div class="content"><a class="title" href="/2024/09/03/%E8%8B%B1%E8%AF%AD%E5%9B%9B%E7%BA%A7%E5%90%AC%E5%8A%9B%E6%96%B9%E6%B3%95/" title="英语四级听力笔记（核心方法）">英语四级听力笔记（核心方法）</a><time datetime="2024-09-03T10:08:28.000Z" title="发表于 2024-09-03 18:08:28">2024-09-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/giFnui8.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Rin_laurant</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
